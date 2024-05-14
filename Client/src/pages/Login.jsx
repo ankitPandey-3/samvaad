@@ -1,49 +1,78 @@
+import axios from "axios";
 import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { CircleUserRound } from 'lucide-react'
 
 export function Login() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const handleSubmit = async () => { };
+
+
+  //submit function
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const { data } = await axios.post('/api/v1/auth/sign-in', {email, password})
+      if(data.success) navigate('/');
+    } catch (error) {
+      console.log('error occured', error.response.data)
+    }
+   };
+
+
+
   return (
-      <div className="lg:w-2/3 flex justify-end py-8 w-full">
-      <div className="lg:w-2/5 lg:h-5/6 py-20 px-14  mt-20 border border-gray-300 rounded-md bg-white w-full h-full">
-        <form onSubmit={handleSubmit}>
-          <h1 className="text-4xl font-bold mb-7 mr-4 font-serif md:text-4xl md:mr-8 text-center text-gray-900">Samvaad</h1>
-          <h1 className="text-3xl font-semibold mb-9 mr-4 text-gray-900 text-center">Sign in</h1>
-          <div className="mb-4">
-            <label htmlFor="email" className="block text-gray-700 text-md">Email:</label>
-            <input
-              type="text"
-              name="email"
-              id="email"
-              className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-indigo-500"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
-          <div className="mb-4">
-            <label htmlFor="email" className="block text-gray-700 text-md">Password:</label>
-            <input
-              type="text"
-              name="password"
-              id="password"
-              className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-indigo-500"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
-          <button type="submit" className="bg-indigo-700 hover:bg-indigo-900 text-white font-semibold rounded-md py-2 px-4 w-full mt-4">
-            Sign in
-          </button>
+    <div className=" bg-gray-900 flex justify-center items-center h-screen">
+      <div className="bg-gray-500 w-1/3 h-4/5 p-2 bg-opacity-20 rounded-2xl">
+        <div className="text-white text-center text-3xl font-serif m-2">Sign-in</div>
+        <div className="text-white flex justify-center mt-10">
+        <CircleUserRound className="w-1/3 h-1/3"/>
+        </div>
+        <form onSubmit={handleSubmit} className="flex flex-col mt-9">
+        <div className="m-4">
+             <label htmlFor="email" className="block text-white">
+               E-mail
+             </label>
+             <input
+               type="text"
+               id="email"
+               name="email"
+               className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"
+               autoComplete="off"
+               value={email}
+               placeholder='example@example.com'
+               onChange={(e) => setEmail(e.target.value)}
+             />
+           </div>
+           <div className="m-4">
+             <label htmlFor="password" className="block text-white">
+               Password
+             </label>
+             <input
+               type="password"
+               id="password"
+               name="password"
+               className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"
+               autoComplete="off"
+               value={password}
+               placeholder='********'
+               onChange={(e) => setPassword(e.target.value)}
+             />
+             <button type="submit" className="bg-gray-700 hover:bg-gray-500 text-white font-semibold rounded-md py-2 px-4 w-full mt-10">
+             Sign in
+           </button>
+           </div>
         </form>
-        <div className="mt-2 text-darkblue-600 text-center">
-          <a href="/signup" className="hover:underline">
-            Don't have an account yet?
-          </a>
+        <div className=" text-white text-center">
+         <Link
+           to='/signup'
+           className="hover:underline">
+             Don't have an account?
+         </Link>
         </div>
       </div>
+
     </div>
-    
-    
   );
 }

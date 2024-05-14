@@ -24,18 +24,10 @@ const userSchema = new mongoose.Schema({
     profileImage:{
         type: String
     },
-    status:{
-        type: String,
-        enum: ['Offline', 'Online', 'Delete'],
-        default: 'Offline'
-    },
-    friendsList:[{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
-    }],
-    createdAt:{
-        type: Date,
-        default: Date.now
+    isAdmin:{
+        type: Boolean,
+        required: true,
+        default: false
     },
     refreshToken:{
         type: String
