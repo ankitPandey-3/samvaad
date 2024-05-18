@@ -153,7 +153,7 @@ const getProfile = async (req, res) => {
   return res.status(404).json(new ApiError(404, "No user"));
 };
 
-const allUsers = async (req, res) => {
+const searchedUsers = async (req, res) => {
   const keyword = req.query.search
     ? {
         $or: [
@@ -168,6 +168,14 @@ const allUsers = async (req, res) => {
   return res.status(201).json(new ApiResponse(201, user, "Searched user"));
 };
 
+const allUsers = async(req, res) => {
+  const users = await User.find({}).select("_id fullName username profileImage email");
+
+  return res.status(200).json(
+    new ApiResponse(200, users, "all users")
+  )
+} 
+
 export {
   userSignin,
   userSignup,
@@ -175,4 +183,5 @@ export {
   testConfig,
   getProfile,
   allUsers,
+  searchedUsers
 };
