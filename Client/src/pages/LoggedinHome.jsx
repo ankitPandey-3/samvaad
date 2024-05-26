@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Video, MessagesSquare, LogOut, LogOutIcon } from "lucide-react";
 import { UserContext } from "../userContext";
 import { Link, useNavigate } from "react-router-dom";
@@ -6,7 +6,14 @@ import axios from 'axios';
 
 function LoggedinHome() {
     const navigate = useNavigate();
-    const {user} = useContext(UserContext);
+    const {user: contextUser} = useContext(UserContext);
+    const [user, setUser] = useState(contextUser)
+
+    useEffect(
+      ()=>{
+        setUser(contextUser)
+      },[contextUser]
+    )
     const handleLogout = async () => {
         const { data } = await axios.post("/api/v1/auth/sign-out", {});
         if (data.success) navigate("/signin");
