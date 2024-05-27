@@ -12,7 +12,7 @@ export function NotLoggedInHome() {
       }}
     >
       <div className="lg:w-1/2 lg:h-4/5 bg-gray-900 lg:rounded-3xl w-full h-full flex justify-center items-center">
-        <div className="w-1/4 bg-white text-black text-center p-4 hover:bg-gray-700 hover:text-white text-2xl font-serif rounded-lg mr-9">
+        <div className="lg:w-1/4 bg-white text-black text-center p-4 hover:bg-gray-700 hover:text-white lg:text-2xl text-md font-serif rounded-lg mr-9">
         <NavLink
           to="/signin"
           className={({ isActive }) =>
@@ -23,7 +23,7 @@ export function NotLoggedInHome() {
         </NavLink>
         </div>
 
-        <div className="w-1/4 bg-white text-black text-center p-4 hover:bg-gray-700 hover:text-white text-2xl font-serif rounded-lg ml-9">
+        <div className="lg:w-1/4 bg-white text-black text-center p-4 hover:bg-gray-700 hover:text-white lg:text-2xl text-md font-serif rounded-lg ml-9">
         <NavLink
           to="/signup"
           className={({ isActive }) =>

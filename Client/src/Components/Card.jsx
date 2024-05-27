@@ -19,7 +19,7 @@ function Card({info, setSelectUserId, selectUserId}) {
                     <img src={info.profileImage} alt="profileImage" className='w-1/2  rounded-full' />
                 </div>
                 <div>
-                    <h1 className='text-white mt-4 text-2xl'>{info.fullName}</h1>
+                    <h1 className='text-white mt-4 lg:text-2xl text-md md:text-2xl'>{info.fullName}</h1>
                 </div>
             </div>
 

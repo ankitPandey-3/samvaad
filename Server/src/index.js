@@ -47,13 +47,18 @@ connectionDB()
                             
                             socket.in(user._id).emit("message received", newMessageReceived);
                         })
-                    })
+                    });
+
+                   
+                    socket.on("disconnect", () => {
+                        console.log("USER DISCONNECTED");
+                    });
+                    
                 });
 
 
 
-
-            }).catch(()=>{
-                console.log('DB failed');
+            }).catch((error)=>{
+                console.log('DB failed --->', error);
             })
 
