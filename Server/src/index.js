@@ -15,7 +15,7 @@ connectionDB()
                 const io = new Server(server,{
                     pingTimeout: 60000,
                     cors: {
-                        origin: 'http://localhost:5173',
+                        origin: process.env.CORS_ORIGIN,
                         credentials: true,
                       },
                 });
