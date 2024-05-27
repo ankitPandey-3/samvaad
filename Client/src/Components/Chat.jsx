@@ -7,7 +7,7 @@ import { Message } from "./Message.jsx";
 import io from 'socket.io-client'
 
 
-const ENDPOINT = "http://localhost:4040"; //Deployed URL at the time of deploying
+const ENDPOINT = "https://samvaad-api.onrender.com"; //Deployed URL at the time of deploying
 var socket, selectedChatCompare;
 
 function Chat({ setSelectUserId, selectUserId, onClick, setOnClick }) {
