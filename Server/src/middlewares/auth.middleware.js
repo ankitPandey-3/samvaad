@@ -8,6 +8,7 @@ export const checkAuth = async(req, res, next)=>{
     }
     const decodedToken = jwt.verify(tokens, process.env.ACCESS_TOKEN_SECRET);
     const user = await User.findById(decodedToken?._id).select("-password -refreshToken");
+    console.log(user)
     if(!user){
         return next();
     }

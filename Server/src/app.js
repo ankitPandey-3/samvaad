@@ -13,7 +13,7 @@ const app = express();
 app.use(cors(
     {
         origin: process.env.CORS_ORIGIN,
-        headers: ["Content-Type"],
+        headers: ["Access-Control-Allow-Origin"],
         credentials: true,
     }
 ));
