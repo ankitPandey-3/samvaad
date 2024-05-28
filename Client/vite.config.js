@@ -5,9 +5,9 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server: {
-    proxy: createProxy({
+    proxy: {
       '/api': 'https://video-chat-application-mern.onrender.com'
-    })
+    }
   }
 
 })
