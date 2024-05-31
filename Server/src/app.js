@@ -9,12 +9,13 @@ import CHATROUTER from './routes/chat.route.js'
 import MESSAGEROUTER from './routes/message.route.js'
 const app = express();
 
+console.log(process.env.CORS_ORIGIN, "=============");
 //Middlewares
 app.use(cors(
     {
         origin: process.env.CORS_ORIGIN,
         credentials: true,
-        maxAge: 24000,
+        // maxAge: 24000,
     }
 ));
 
