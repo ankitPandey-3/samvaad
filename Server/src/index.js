@@ -15,7 +15,8 @@ connectionDB()
                 const io = new Server(server,{
                     pingTimeout: 60000,
                     cors: {
-                        origin: 'https://samvaad-chi.vercel.app',
+                        // origin: 'https://samvaad-chi.vercel.app',
+                        origin: process.env.CORS_ORIGIN,
                         credentials: true,
                       },
                 });

@@ -7,7 +7,8 @@ import { Message } from "./Message.jsx";
 import io from 'socket.io-client'
 
 
-const ENDPOINT = "https://video-chat-application-mern.onrender.com"; //Deployed URL at the time of deploying
+// const ENDPOINT = "https://video-chat-application-mern.onrender.com"; //Deployed URL at the time of deploying
+const ENDPOINT = "http://localhost:4040";
 var socket, selectedChatCompare;
 
 function Chat({ setSelectUserId, selectUserId, onClick, setOnClick }) {

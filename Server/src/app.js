@@ -12,8 +12,9 @@ const app = express();
 //Middlewares
 app.use(cors(
     {
-        origin: 'https://samvaad-chi.vercel.app',
+        origin: process.env.CORS_ORIGIN,
         credentials: true,
+        maxAge: 24000,
     }
 ));
 
